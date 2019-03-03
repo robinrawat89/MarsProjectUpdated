@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MarsFramework.Pages;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,8 @@ namespace MarsFramework
             [Test]
             public void AddShareSkill()
             {
-
+                ShareSkill obje = new ShareSkill();
+                obje.enterDetails();
             }
 
         }

@@ -48,7 +48,39 @@ namespace MarsFramework
         [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[4]/div/span/i")]
         private IWebElement earnTargetEditIcon { get; set; }
 
-       
+        //Click on fulltime option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[2]/div/span/select/option[3]")]
+        private IWebElement fullTime { get; set; }
+
+        //Click on parttime option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[2]/div/span/select/option[2]")]
+        private IWebElement partTime { get; set; }
+
+        //Click on lessHours option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[3]/div/span/select/option[2]")]
+        private IWebElement lessHours { get; set; }
+
+        //Click on moreHours option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[3]/div/span/select/option[3]")]
+        private IWebElement moreHours { get; set; }
+
+        //Click on AsneddedHours option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[3]/div/span/select/option[4]")]
+        private IWebElement asNeeded { get; set; }
+
+        //Click on earnoption1 option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[4]/div/span/select/option[2]")]
+        private IWebElement lessEarn { get; set; }
+
+        //Click on earnoption2 option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[4]/div/span/select/option[3]")]
+        private IWebElement moreEarn { get; set; }
+
+        //Click on earnoption3 option
+        [FindsBy(How = How.XPath, Using = "//*[@class='extra content']/div/div[4]/div/span/select/option[4]")]
+        private IWebElement doubleEarn { get; set; }
+                                       
+
         #endregion
 
         internal void EditProfile()
@@ -56,13 +88,13 @@ namespace MarsFramework
 
             //Populate the Excel Sheet
             GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
-            Thread.Sleep(5000);
+            GlobalDefinitions.wait(5);
 
             //Click on user name 
             clickUserName.Click();
 
             //Edit First Name
-            Thread.Sleep(10000);
+            GlobalDefinitions.wait(5);
             GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='field']/input[1]")).Click();
             GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='field']/input[1]")).Clear();
             GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='field']/input[1]")).SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FirstName"));
@@ -72,65 +104,75 @@ namespace MarsFramework
             lastName.Clear();
             lastName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "LastName"));
 
-            //Click Availiable  Edit Icon
+            //click Save button
+            clickSave.Click();
             Thread.Sleep(5000);
+
+            //Click Availiable  Edit Icon
+
             availabilityTimeEditIcon.Click();
+            GlobalDefinitions.wait(5);
 
             //Availability Time option
 
-            //Thread.Sleep(1500);
-            Actions action = new Actions(GlobalDefinitions.driver);
-            action.MoveToElement(dropDown1).Build().Perform();
-            Thread.Sleep(1000);
-
-            IWebElement dropDown1 = GlobalDefinitions.driver.FindElement(By.Name("availabiltyType"));
-            IList<IWebElement> AvailableTime = dropDown1.FindElements(By.TagName("option"));
-            int count = AvailableTime.Count;
-            for(int i = 0; i < count; i++)
+            switch (GlobalDefinitions.ExcelLib.ReadData(2, "AvailableTime"))
             {
-                if(AvailableTime[i].Text==GlobalDefinitions.ExcelLib.ReadData(2, "AvailableTime"))
-                {
-                    AvailableTime[i].Click();
-                    Base.test.Log(LogStatus.Info, "Select the available time");
 
-                }
+                case "Full Time":
+                   // IWebElement fullTime = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[2]/div/span/select/option[3]"));
+                    fullTime.Click();
+                    break;
+                case "Part Time":
+                    //IWebElement partTime = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[2]/div/span/select/option[2]"));
+                    partTime.Click();
+                    break;
             }
-
             // Hours Edit Icon
-            Thread.Sleep(5000);
+                    
             hoursEditIcon.Click();
+            GlobalDefinitions.wait(5);
 
             //Availability Hours option
-            IWebElement dropDown2 = GlobalDefinitions.driver.FindElement(By.Name("availabiltyHour"));
-            IList<IWebElement> AvailableHours = dropDown2.FindElements(By.TagName("option"));
-            int count2 = AvailableHours.Count;
-            for (int i = 0; i < count; i++)
+            
+            switch (GlobalDefinitions.ExcelLib.ReadData(2, "Hours"))
             {
-                if (AvailableHours[i].Text == GlobalDefinitions.ExcelLib.ReadData(2, "Hours"))
-                {
-                    AvailableHours[i].Click();
-                    Base.test.Log(LogStatus.Info, "Select the available time");
 
-                }
+                case "Less than 30hours a week":
+                    //IWebElement lessHours = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[3]/div/span/select/option[2]"));
+                    lessHours.Click();
+                    break;
+                case "More than 30hours a week":
+                    //IWebElement moreHours = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[3]/div/span/select/option[3]"));
+                    moreHours.Click();
+                    break;
+                case "As needed":
+                    //IWebElement asNeeded = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[3]/div/span/select/option[4]"));
+                    asNeeded.Click();
+                    break;
             }
 
-
             //Click edit for earn Target
-            Thread.Sleep(5000);
+           
             earnTargetEditIcon.Click();
+            GlobalDefinitions.wait(5);
 
             //Earn Target option
-            IWebElement dropDown3 = GlobalDefinitions.driver.FindElement(By.Name("availabiltyTarget"));
-            IList<IWebElement> earnTarget = dropDown3.FindElements(By.TagName("option"));
-            int count3 = earnTarget.Count;
-            for (int i = 0; i < count; i++)
+            
+            switch (GlobalDefinitions.ExcelLib.ReadData(2, "EarnTarget"))
             {
-                if (earnTarget[i].Text == GlobalDefinitions.ExcelLib.ReadData(2, "EarnTarget"))
-                {
-                    earnTarget[i].Click();
-                    Base.test.Log(LogStatus.Info, "Select the available time");
 
-                }
+                case "Less than $500 per month":
+                    //IWebElement lessEarn = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[4]/div/span/select/option[2]"));
+                    lessEarn.Click();
+                    break;
+                case "Between $500 and $1000 per month":
+                    //IWebElement moreEarn = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[4]/div/span/select/option[3]"));
+                    moreEarn.Click();
+                    break;
+                case "More than $1000 per month":
+                    //IWebElement doubleEarn = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='extra content']/div/div[4]/div/span/select/option[4]"));
+                    doubleEarn.Click();
+                    break;
             }
 
             ////---------------------------------------------------------

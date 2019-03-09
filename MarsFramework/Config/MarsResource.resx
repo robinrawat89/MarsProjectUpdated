@@ -129,13 +129,13 @@
     <comment>If true Login, else Register</comment>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>C:\Users\chand\Desktop\MarsFramework\MarsFramework\TestReports\MarsReports.html</value>
+    <value>D:\Project_Automation\MarsFramework\HtmlReports\MarsReports.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
     <value>C:\Users\chand\Desktop\MarsFramework\MarsFramework\Config\XMLFile.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>C:\Users\chand\Desktop\MarsFramework\MarsFramework\TestReports\Screenshots\</value>
+    <value>D:\Project_Automation\MarsFramework\Screenshots\</value>
   </data>
   <data name="Url" xml:space="preserve">
     <value>http://www.skillswap.pro/</value>

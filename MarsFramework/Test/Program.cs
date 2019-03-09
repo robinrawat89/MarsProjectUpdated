@@ -32,6 +32,7 @@ namespace MarsFramework
             {
                 ShareSkill obje = new ShareSkill();
                 obje.enterDetails();
+                obje.verifyListing();
             }
 
         }

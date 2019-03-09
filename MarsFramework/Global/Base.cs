@@ -79,9 +79,9 @@ namespace MarsFramework.Global
             // end test. (Reports)
             extent.EndTest(test);
             // calling Flush writes everything to the log file (Reports)
-            extent.Flush();
+            extent.Flush();           
             // Close the driver :)            
-            //GlobalDefinitions.driver.Close();
+            GlobalDefinitions.driver.Close();
         }
         #endregion
 

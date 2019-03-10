@@ -81,7 +81,7 @@ namespace MarsFramework.Pages
 
 
         #endregion
-
+        //add new share skill
 
         public void enterDetails()
         {
@@ -391,6 +391,8 @@ namespace MarsFramework.Pages
 
         }
 
+
+        //function to edit the share skill
         
         public void editShareSkillML()
         {
@@ -420,7 +422,7 @@ namespace MarsFramework.Pages
 
         }
 
-
+         // function to edit the share skill
         public void editShareSkill()
         {
 
@@ -729,8 +731,33 @@ namespace MarsFramework.Pages
 
         }
 
+        //function to delete the added share skill
+        public void deleteShareSkill()
+        {
+            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "SkillShareAdd");
 
+            manageListingLink.Click();
+            IWebElement tableElement = GlobalDefinitions.driver.FindElement(By.XPath("//*[@class='ui striped table']"));
+            IList<IWebElement> tableRow = tableElement.FindElements(By.TagName("tr"));
+                                   
+            foreach (IWebElement row in tableRow)
+            {
+                var p = row.Text;
+                if (row.Text.Contains(Global.GlobalDefinitions.ExcelLib.ReadData(2, "Title")) && row.Text.Contains(Global.GlobalDefinitions.ExcelLib.ReadData(2, "Description")))
+                {
+                    var deleteLink = GlobalDefinitions.driver.FindElement(By.XPath("//td[text()='" + Global.GlobalDefinitions.ExcelLib.ReadData(2, "Title") + "']/..//td/i[3]"));
+                    deleteLink.Click();
+
+                    driver.SwitchTo().Window(driver.WindowHandles.Last());
+                    var confirmYes = driver.FindElement(By.XPath("//*[@class='ui icon positive right labeled button']"));
+                    confirmYes.Click();
+
+                }
+            }
+
+        }
     }
+    
 
 }
 

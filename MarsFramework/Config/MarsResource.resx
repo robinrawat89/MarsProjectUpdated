@@ -132,7 +132,7 @@
     <value>D:\Project_Automation\MarsFramework\HtmlReports\MarsReports.html</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>C:\Users\chand\Desktop\MarsFramework\MarsFramework\Config\XMLFile.xml</value>
+    <value>D:\Project_Automation\MarsFramework\MarsFramework\Config</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
     <value>D:\Project_Automation\MarsFramework\Screenshots\</value>

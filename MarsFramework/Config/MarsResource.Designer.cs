@@ -97,7 +97,7 @@ namespace MarsFramework.Config {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\chand\Desktop\MarsFramework\MarsFramework\Config\XMLFile.xml.
+        ///   Looks up a localized string similar to D:\Project_Automation\MarsFramework\MarsFramework\Config.
         /// </summary>
         internal static string ReportXMLPath {
             get {

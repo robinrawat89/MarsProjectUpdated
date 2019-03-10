@@ -65,7 +65,6 @@ D:\Project_Automation\MarsFramework\MarsFramework\bin\Debug\RazorEngine.xml
 D:\Project_Automation\MarsFramework\MarsFramework\bin\Debug\System.Web.Razor.xml
 D:\Project_Automation\MarsFramework\MarsFramework\bin\Debug\WebDriver.xml
 D:\Project_Automation\MarsFramework\MarsFramework\bin\Debug\WebDriver.Support.xml
-D:\Project_Automation\MarsFramework\MarsFramework\obj\Debug\MarsFramework.csprojAssemblyReference.cache
 D:\Project_Automation\MarsFramework\MarsFramework\obj\Debug\MarsFramework.Config.MarsResource.resources
 D:\Project_Automation\MarsFramework\MarsFramework\obj\Debug\MarsFramework.csproj.GenerateResource.cache
 D:\Project_Automation\MarsFramework\MarsFramework\obj\Debug\MarsFramework.csproj.CoreCompileInputs.cache
